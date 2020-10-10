@@ -1019,7 +1019,7 @@ public:
         program PMUs: Intel(r) VTune(tm), Intel(r) Performance Tuning Utility (PTU). This code may make
         VTune or PTU measurements invalid. VTune or PTU measurement may make measurement with this code invalid. Please enable either usage of these routines or VTune/PTU/etc.
     */
-    ErrorCode program(const ProgramMode mode_ = DEFAULT_EVENTS, const void * parameter_ = NULL); // program counters and start counting
+    ErrorCode program(const ProgramMode mode_ = DEFAULT_EVENTS, const void * parameter_ = NULL, bool skip_cbo = false); // program counters and start counting
 
     /*! \brief Programs uncore latency counters on microarchitectures codename SandyBridge-EP and later Xeon uarch
         \param enable_pmm enables DDR/PMM. See possible profile values in pcm-latency.cpp example

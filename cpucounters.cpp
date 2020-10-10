@@ -2070,7 +2070,7 @@ perf_event_attr PCM_init_perf_event_attr(bool group = true)
 }
 #endif
 
-PCM::ErrorCode PCM::program(const PCM::ProgramMode mode_, const void * parameter_)
+PCM::ErrorCode PCM::program(const PCM::ProgramMode mode_, const void * parameter_, bool skip_cbo)
 {
 #ifdef __linux__
     if (isNMIWatchdogEnabled())
@@ -2446,8 +2446,9 @@ PCM::ErrorCode PCM::program(const PCM::ProgramMode mode_, const void * parameter
         {
             max_qpi_speed = (std::max)(qpi_speeds[i].get(), max_qpi_speed);
         }
-
-	programCbo();
+        if (!skip_cbo) {
+	        programCbo();
+        }
     }
 
     reportQPISpeed();
